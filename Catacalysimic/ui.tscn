@@ -1,0 +1,160 @@
+[gd_scene load_steps=18 format=3 uid="uid://ojjh1yjedd6b"]
+
+[ext_resource type="Script" path="res://ui.gd" id="1_maki8"]
+[ext_resource type="Texture2D" uid="uid://bolrhv6dopmc3" path="res://sprite_weapons0.png" id="2_8y1gn"]
+[ext_resource type="Texture2D" uid="uid://djmw673lnxn44" path="res://sprite_weapons2.00.png" id="2_1031f"]
+[ext_resource type="Texture2D" uid="uid://dobcy7wqtj1qh" path="res://textures/guns/sprite_0.png" id="4_6l1vp"]
+[ext_resource type="Texture2D" uid="uid://da8khbhkiysxb" path="res://textures/guns/sprite_1.png" id="5_7qkye"]
+[ext_resource type="Texture2D" uid="uid://4gv2rndg72je" path="res://textures/guns/sprite_2.png" id="6_1jpde"]
+[ext_resource type="Texture2D" uid="uid://bcf2ecemtps13" path="res://textures/guns/sprite_3.png" id="7_v66l8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfslk"]
+atlas = ExtResource("2_1031f")
+region = Rect2(64, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4okt"]
+atlas = ExtResource("2_1031f")
+region = Rect2(192, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88a2i"]
+atlas = ExtResource("2_1031f")
+region = Rect2(128, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g333p"]
+atlas = ExtResource("2_8y1gn")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pml36"]
+atlas = ExtResource("2_8y1gn")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fos5h"]
+atlas = ExtResource("2_8y1gn")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt6rk"]
+atlas = ExtResource("2_8y1gn")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjer6"]
+atlas = ExtResource("2_8y1gn")
+region = Rect2(256, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mpsx0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfslk")
+}],
+"loop": false,
+"name": &"gun_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4okt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88a2i")
+}],
+"loop": false,
+"name": &"gun_shoot",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g333p")
+}],
+"loop": false,
+"name": &"knife_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_6l1vp")
+}],
+"loop": false,
+"name": &"machine_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_7qkye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1jpde")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_v66l8")
+}],
+"loop": false,
+"name": &"machine_shoot",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pml36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fos5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dt6rk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjer6")
+}],
+"loop": false,
+"name": &"stab",
+"speed": 16.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xs4xp"]
+font_size = 19
+
+[node name="ui" type="CanvasLayer"]
+script = ExtResource("1_maki8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(195, 129)
+sprite_frames = SubResource("SpriteFrames_mpsx0")
+animation = &"machine_shoot"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -31.0
+offset_right = 161.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.137255, 0.137255, 0.137255, 1)
+
+[node name="HEALTH" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.445
+anchor_top = 0.829
+anchor_right = 0.592
+anchor_bottom = 0.968
+offset_left = 4.60001
+offset_top = 11.78
+offset_right = 32.56
+offset_bottom = 9.76001
+scale = Vector2(0.522921, 0.522921)
+
+[node name="Label2" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.435
+anchor_top = 0.844
+anchor_right = 0.606
+anchor_bottom = 0.974
+offset_left = 8.8
+offset_top = 0.0800018
+offset_right = 27.08
+offset_bottom = 3.68001
+scale = Vector2(0.387461, 0.387461)
+text = "HEALTH"
+label_settings = SubResource("LabelSettings_xs4xp")

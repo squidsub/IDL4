@@ -1,0 +1,120 @@
+[gd_scene load_steps=21 format=3 uid="uid://1bhn3pkhqi42"]
+
+[ext_resource type="Script" path="res://monster_1.gd" id="1_webcg"]
+[ext_resource type="Texture2D" uid="uid://bc403rt7ole23" path="res://textures/alien/ALIENSPRITESFINAL07.png" id="2_73im5"]
+[ext_resource type="Texture2D" uid="uid://bi85ugdk8giuk" path="res://textures/alien/ALIENSPRITESFINAL08.png" id="3_aqsii"]
+[ext_resource type="Texture2D" uid="uid://btv7akk5m4cl7" path="res://textures/alien/ALIENSPRITESFINAL09.png" id="4_idmh4"]
+[ext_resource type="Texture2D" uid="uid://cuxrbuupvmuuu" path="res://textures/alien/ALIENSPRITESFINAL10.png" id="5_pxt6a"]
+[ext_resource type="Texture2D" uid="uid://dh576pcjkuwou" path="res://textures/alien/ALIENSPRITESFINAL11.png" id="6_y0ayb"]
+[ext_resource type="Texture2D" uid="uid://blnnbqrokh6oj" path="res://textures/alien/sprite_0.png" id="7_7mo0j"]
+[ext_resource type="Texture2D" uid="uid://b8nqhfu3qrbp1" path="res://textures/alien/ALIENSPRITESFINAL00.png" id="7_y252l"]
+[ext_resource type="Texture2D" uid="uid://cy8bkyidaokya" path="res://textures/alien/sprite_1.png" id="8_cwll8"]
+[ext_resource type="Texture2D" uid="uid://bq2d6ua0bi3li" path="res://textures/alien/ALIENSPRITESFINAL01.png" id="8_ticqf"]
+[ext_resource type="Texture2D" uid="uid://bbmyfj13yu7jm" path="res://textures/alien/ALIENSPRITESFINAL02.png" id="9_ekx2f"]
+[ext_resource type="Texture2D" uid="uid://8e8jyu3dax1x" path="res://textures/alien/sprite_2.png" id="9_v6dai"]
+[ext_resource type="Texture2D" uid="uid://bpiiv60lptqw0" path="res://textures/alien/sprite_3.png" id="10_0xqw7"]
+[ext_resource type="Texture2D" uid="uid://bsqbaxr2t0prv" path="res://textures/alien/ALIENSPRITESFINAL03.png" id="10_c1q5r"]
+[ext_resource type="Texture2D" uid="uid://bklmtqdakbih2" path="res://textures/alien/ALIENSPRITESFINAL04.png" id="11_np6po"]
+[ext_resource type="Texture2D" uid="uid://be0pot5pga3my" path="res://textures/alien/ALIENSPRITESFINAL05.png" id="12_b5ier"]
+[ext_resource type="Texture2D" uid="uid://d3hjhl21i6s3b" path="res://textures/alien/ALIENSPRITESFINAL06.png" id="13_gxi1o"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jotfo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_73im5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_aqsii")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_idmh4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pxt6a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_y0ayb")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_y252l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ticqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ekx2f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_c1q5r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_np6po")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_b5ier")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_gxi1o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_7mo0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_cwll8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_v6dai")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0xqw7")
+}],
+"loop": false,
+"name": &"die",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6irpg"]
+height = 2.00177
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_uu77a"]
+height = 0.450549
+radius = 0.535669
+
+[node name="Monster1" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_webcg")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1.94392, 0, 0, 0, 1.94392, 0, 0, 0, 1.94392, 0.0934865, 0.834051, 0)
+billboard = 2
+sprite_frames = SubResource("SpriteFrames_jotfo")
+autoplay = "default"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.990027, 0)
+shape = SubResource("CapsuleShape3D_6irpg")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(18.6013, 0, 0, 0, 37.4404, 0, 0, 0, 19.1632, 0, 1.14306, -0.0218532)
+shape = SubResource("CylinderShape3D_uu77a")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49012e-08, 1.17732, 0)
+target_position = Vector3(0, 0, 40)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

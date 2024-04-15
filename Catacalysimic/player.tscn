@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4iyyp84600fj"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_7ny4f"]
+[ext_resource type="PackedScene" uid="uid://ojjh1yjedd6b" path="res://ui.tscn" id="2_e5so3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yotrp"]
+
+[node name="Player" type="Node3D"]
+
+[node name="player" type="CharacterBody3D" parent="."]
+collision_mask = 3
+script = ExtResource("1_7ny4f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
+shape = SubResource("CapsuleShape3D_yotrp")
+
+[node name="head" type="Node3D" parent="player/CollisionShape3D"]
+
+[node name="Camera3D" type="Camera3D" parent="player/CollisionShape3D/head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.612116, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="player/CollisionShape3D/head/Camera3D"]
+target_position = Vector3(0, 0, -30)
+collision_mask = 3
+
+[node name="Flashlight" type="SpotLight3D" parent="player/CollisionShape3D/head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.186602, 0, 0)
+visible = false
+light_color = Color(0.972549, 0.956863, 0.733333, 1)
+light_energy = 3.909
+spot_range = 19.2368
+spot_angle = 8.86394
+
+[node name="ui" parent="." instance=ExtResource("2_e5so3")]
